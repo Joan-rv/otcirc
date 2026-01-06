@@ -138,7 +138,7 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   ctx.lineWidth = 1;
-  ctx.stokeStyle = "black";
+  ctx.strokeStyle = "black";
   circle.draw(
     vec2(canvas.width / 2, canvas.height / 2),
     (canvas.width / 2) * 0.9,
