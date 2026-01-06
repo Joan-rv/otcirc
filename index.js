@@ -45,10 +45,10 @@ class Circle {
     ctx.restore();
   }
 
-  balance() {
+  balance(direction) {
     if (!this.left || !this.right) return;
-    this.left.balance();
-    this.right.balance();
+    this.left.balance("right");
+    this.right.balance("left");
 
     if (this.left.degree - this.right.degree > 1) {
       this.left.takeOne();
@@ -56,6 +56,16 @@ class Circle {
     } else if (this.right.degree - this.left.degree > 1) {
       this.right.takeOne();
       this.left.pushOne();
+    }
+
+    if (this.degree % 2 == 1) {
+      if (direction === "right" && this.left.degree > this.right.degree) {
+        this.left.takeOne();
+        this.right.pushOne();
+      } else if (direction === "left" && this.right.degree > this.left.degree) {
+        this.right.takeOne();
+        this.left.pushOne();
+      }
     }
   }
 
@@ -127,7 +137,7 @@ canvas.addEventListener("mousedown", function (event) {
 });
 
 function balance() {
-  circle.balance();
+  circle.balance("root");
 }
 
 function init() {
