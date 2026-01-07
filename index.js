@@ -145,6 +145,13 @@ function init() {
 }
 
 function draw() {
+  if (
+    canvas.clientWidth != canvas.width ||
+    canvas.clientHeight != canvas.height
+  ) {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+  }
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   ctx.lineWidth = 1;
